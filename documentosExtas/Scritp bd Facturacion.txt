@@ -1,0 +1,115 @@
+create database DBFact
+go
+use DBFact
+go
+-- creacion de la tabla productos
+Create table Productos(
+id int identity(1,1) primary key not null,
+nombre varchar(30) not null,
+stock int not null,
+precio int not null,
+estado bit not null
+)
+go
+-- creacion de la tabla de tipos de documento
+Create table TiposDocumentos(
+id int identity(1,1) primary key not null,
+nombre varchar(20) not null
+)
+go
+-- creacion de la tabla clientes
+Create table Clientes(
+documento int primary key not null,
+tipoDocumento int not null,
+nombre varchar(50) not null,
+edad smallInt not null,
+estado bit not null
+CONSTRAINT fk_tipoDocumento FOREIGN KEY (tipoDocumento) references TiposDocumentos(id)
+)
+go
+-- creacion de la tabla ventas
+Create table Ventas (
+id int identity(1,1) primary key not null,
+idCliente int not null,
+netoTotal int not null,
+fecha Date not null
+CONSTRAINT fk_Cliente FOREIGN KEY (idCliente) references Clientes(documento)
+)
+go
+-- creacion de la tabla detalle de venta
+Create table DetalleVenta(
+idVenta int not null,
+idProducto int not null,
+cantidad int not null,
+total int not null
+CONSTRAINT fk_Venta FOREIGN KEY (idVenta) references Ventas (id),
+CONSTRAINT fk_Producto FOREIGN KEY (idProducto) references Productos (id),
+)
+go
+-- insercion de producos
+insert into Productos (nombre, stock, precio,estado) values('audifonos',3,70000,0)
+insert into Productos (nombre, stock, precio,estado) values('control',6,120000,0)
+insert into Productos (nombre, stock, precio,estado) values('smart watch',7,80000,0)
+insert into Productos (nombre, stock, precio,estado) values('camara',4,500000,0)
+insert into Productos (nombre, stock, precio,estado) values('memoria Usb',10,10000,0)
+insert into Productos (nombre, stock, precio,estado) values('portatil',5,1200000,0)
+insert into Productos (nombre, stock, precio,estado) values('teclado',2,40000,0)
+insert into Productos (nombre, stock, precio,estado) values('mouse',3,30000,0)
+insert into Productos (nombre, stock, precio,estado) values('parlante',12,25000,0)
+insert into Productos (nombre, stock, precio,estado) values('base refrigerante',9,35000,0)
+insert into Productos (nombre, stock, precio,estado) values('smartphone',8,700000,0)
+go
+-- insercion de los tipos de documento
+insert into TiposDocumentos(nombre)values('Cedula ciudadana')
+insert into TiposDocumentos(nombre)values('Tarjeta de identidad')
+insert into TiposDocumentos(nombre)values('Cedula extranjera')
+go
+-- insercion de clientes
+insert into Clientes (documento,tipoDocumento,nombre,edad,estado) values(1001091488,1,'Cristian Herrera',19,0)
+insert into Clientes (documento,tipoDocumento,nombre,edad,estado) values(123456789,1,'Lola Parra Gracia',50,0)
+insert into Clientes (documento,tipoDocumento,nombre,edad,estado) values(987654321,2,'José Estrada Llano',15,0)
+insert into Clientes (documento,tipoDocumento,nombre,edad,estado) values(1472583669,3,'Rosario Rocamora',26,0)
+insert into Clientes (documento,tipoDocumento,nombre,edad,estado) values(1223344558,1,'Isaac Roldan Ripoll',35,0)
+insert into Clientes (documento,tipoDocumento,nombre,edad,estado) values(78932165,1,'Luis Ángel Aparicio ',62,0)
+
+go
+-- insercion de ventas
+insert into Ventas (idCliente, netoTotal,fecha) values(1001091488, 30000,'2000-10-01') 
+insert into Ventas (idCliente, netoTotal,fecha) values(123456789, 30000,'2000-12-05') 
+insert into Ventas (idCliente, netoTotal,fecha) values(1223344558, 80000,'2000-02-27') 
+insert into Ventas (idCliente, netoTotal,fecha) values(987654321, 2400000,'2001-04-06')
+insert into Ventas (idCliente, netoTotal,fecha) values(123456789, 50000,'2002-03-01')
+insert into Ventas (idCliente, netoTotal,fecha) values(78932165, 10000,'2000-03-10')
+insert into Ventas (idCliente, netoTotal,fecha) values(1472583669, 70000,'2000-08-15') 
+insert into Ventas (idCliente, netoTotal,fecha) values(1001091488, 1235000,'2001-05-10')
+insert into Ventas (idCliente, netoTotal,fecha) values(987654321, 570000,'2000-07-03') 
+insert into Ventas (idCliente, netoTotal,fecha) values(1472583669, 210000,'2001-05-30') 
+insert into Ventas (idCliente, netoTotal,fecha) values(1001091488, 780000,'2000-03-26')
+go
+-- insercion detalles de venta
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(1,5,3,30000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(2,8,1,30000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(3,7,2,80000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(4,2,2,24000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(5,9,2,50000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(6,5,1,10000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(7,1,1,70000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(8,6,1,1200000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(8,10,1,35000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(9,4,1,500000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(9,1,1,70000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(10,2,1,120000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(10,1,1,70000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(10,8,1,30000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(11,11,1,700000)
+insert into DetalleVenta (idVenta,idProducto,cantidad,total) values(11,3,1,80000)
+
+-- consultas --
+-- consulta para traer los precios por producto
+select nombre,precio from Productos
+-- consulta de productos que hallan llegado al minimo de unidades
+select * from Productos where stock = 5
+-- consulta a clientes que no mayores a 35 con ventas entre febrero hasta mayo en el 2000
+select documento,nombre,edad,id as idVenta,fecha as fechaFactura from Ventas inner join Clientes on  Ventas.idCliente = Clientes.documento
+where Clientes.edad <= 35 and YEAR(Ventas.fecha) = '2000' 
+and (MONTH(Ventas.fecha) >= '02' and MONTH(Ventas.fecha) <= '05')

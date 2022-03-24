@@ -1,0 +1,20 @@
+<div class="container-fluid px-5">
+    <div class="row">
+        <div class="card col-12 col-md-8 m-auto">
+            <div class="card-header text-center bg-white">
+                <h2> Producto</h2>
+            </div>
+            <div class="row p-5">
+                <div *ngFor="let item of menu" class="card mb-3">
+                    <div class="card-body ">
+                        <h2 class="card-title">{{item.title}}</h2>
+                        <div class="text-end my-3">
+                            <a class="btn btn-secondary mx-3" style="width: 166px;" [routerLink]="'/'+item.id+item.path">Agregar {{item.title}}</a>
+                            <a class="btn btn-secondary" style="width: 166px;" [routerLink]="'/'+item.id">Ver {{item.title}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

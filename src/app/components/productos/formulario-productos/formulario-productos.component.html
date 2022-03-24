@@ -1,0 +1,56 @@
+<div class="container-fluid px-5">
+    <div class="row">
+        <div class="card col-12 col-md-8 m-auto">
+            <div class="card-header text-center bg-white">
+                <h2>
+                    {{productoId != "nuevo"? 
+                    "Editar":"Nuevo"}} Producto
+                </h2>
+            </div>
+            <div class="row p-5">
+                <ng-form [formGroup]="formProducto" >
+                    <div class="form-floating mb-5">
+                        <input 
+                        class="form-control"
+                        type="text" 
+                        name="nombre" 
+                        id="nombre" 
+                        placeholder="nombre"
+                        formControlName="nombre"
+                        />
+                        <label for="nombre">Nombre producto</label>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input
+                        class="form-control"
+                        type="number"
+                        name="stock"
+                        id="stock"
+                        placeholder="cantidad"
+                        formControlName="stock"
+                        />
+                        <label for="stock">Cantidad</label>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input
+                        class="form-control"
+                        type="number"
+                        name="precio"
+                        id="precio"
+                        placeholder="precio"
+                        formControlName="precio"
+                        />
+                        <label for="precio">Precio</label>
+                    </div>
+                    <input 
+                        type="submit"
+                        class="btn btn-secondary col-12 py-3"
+                        [value]="productoId != 'nuevo'? 
+                        'Editar producto':'Agregar producto'"
+                        (click)="guardarProducto()"
+                    />
+                </ng-form>
+            </div>
+        </div>
+    </div>
+</div>

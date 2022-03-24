@@ -1,0 +1,70 @@
+<div class="container-fluid px-5">
+    <div class="row">
+        <div class="card col-12 col-md-8 m-auto">
+            <div class="card-header text-center bg-white">
+                <h2> {{clienteId != "nuevo"?
+                    "Editar":"Agregar"}} Cliente
+                </h2>
+            </div>
+            <div class="row p-5">
+                <form [formGroup]="formCliente">
+                    <div class="row">
+                        <div class="form-floating mb-5 col-6">
+                            <select
+                                class="form-select"
+                                type="number"
+                                name="tipo"
+                                id="tipo"
+                                placeholder="seleccione"
+                                formControlName="tipoDocumento"
+                            >
+                            <option *ngFor="let item of tipos" [value]="item.id">{{item.nombre}}</option>
+                            </select>
+                            <label for="tipo">Tipo documento</label>
+                        </div>
+                        <div class="form-floating mb-3 col-6">
+                            <input 
+                            class="form-control"
+                            type="number" 
+                            name="documeto" 
+                            id="documeto" 
+                            formControlName="documento"
+                            placeholder="N° documento"
+                            />
+                            <label for="documeto">N° documeto</label>
+                        </div>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input 
+                        class="form-control"
+                        type="text" 
+                        name="nombre" 
+                        id="nombre" 
+                        placeholder="Nombre"
+                        formControlName="nombre"
+                        />
+                        <label for="nombre">Nombre cliente</label>
+                    </div>
+                    <div class="form-floating mb-5">
+                        <input
+                        class="form-control"
+                        type="number"
+                        name="edad"
+                        id="edad"
+                        placeholder="Edad"
+                        formControlName="edad"
+                        />
+                        <label for="edad">Edad</label>
+                    </div>
+                    <input 
+                        type="submit"
+                        class="btn btn-secondary col-12 py-3"
+                        [value]="clienteId != 'nuevo'?
+                        'Editar cliente':'Agregar cliente'"
+                        (click)="guardarCliente()"
+                    />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

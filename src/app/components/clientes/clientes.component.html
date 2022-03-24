@@ -1,0 +1,55 @@
+
+<div class="container-fluid px-3">
+    <div class="row">
+        <h3 class="text-start">Lista clientes</h3>
+        <div class="card col-12 m-auto mt-3">
+            <div class="row">
+                <div class="tablaHeigth">
+                    <table class="table table-hover table-bordered">
+                        <thead class="table-dark">
+                          <tr>
+                            <th scope="col">nombre</th>
+                            <th scope="col">Tipo Documento</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Edad</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of clientes">
+                            <td>{{item.nombre }}</td>
+                            <td >
+                              <span *ngFor="let t of tipos">
+                                {{t.id == item.tipoDocumento ? t.nombre :'' }}
+                              </span>
+                            </td>
+                            <td >{{item.documento }}</td>
+                            <td>{{item.edad}}</td>
+                            <td class="text-end">
+                                <button 
+                                    type="button" 
+                                    class="btn btn-outline-secondary mx-2"
+                                    (click)="irCliente(item.documento)"
+                                    >Editar
+                                </button>
+                                <button 
+                                    type="button" 
+                                    class="btn btn-outline-primary mx-2" 
+                                    (click)="confirmacionEliminar(item.documento)"
+                                    >Eliminar
+                                </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-end my-3">
+                    <button 
+                      class="btn btn-secondary"
+                      routerLink="/clientes/formulario-cliente/nuevo"
+                      >Agregar Nuevo cliente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

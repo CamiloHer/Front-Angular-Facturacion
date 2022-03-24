@@ -1,0 +1,83 @@
+<div class="container-fluid px-3">
+    <div class="row">
+        <div class="card col-12 col-md-12 m-auto">
+            <div class="card-header text-center bg-white">
+                <h2>  
+                    {{ventaId != 'nuevo' ?
+                    'Editar':'Agregar'}} factura-venta
+                </h2>
+            </div>
+            <div class="row p-5">
+                <form [formGroup]="formVentas">
+                    <div class="row">
+                        <div class="form-floating mb-5 col-6">
+                            <select
+                                class="form-select"
+                                name="clientes"
+                                id="clientes"
+                                placeholder="seleccione"
+                                formControlName="clientes"
+                            >
+                            <option *ngFor="let item of listaClientes" [value]="item.documento">{{item.nombre}}</option>
+                            </select>
+                            <label for="cliente">cliente</label>
+                        </div>
+                        <div class="form-floating mb-3 col-6">
+                            <input 
+                            class="form-control"
+                            type="date" 
+                            name="fecha" 
+                            id="fecha" 
+                            formControlName="fecha"
+                            placeholder="fecha"
+                            />
+                            <label for="fecha">Fecha</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-floating mb-5 col-6">
+                            <select
+                                class="form-select"
+                                name="producto"
+                                id="producto"
+                                placeholder="seleccione"
+                                formControlName="producto"
+                                (change)="handleChange()"
+                            >
+                            <option *ngFor="let item of listaProductos" [value]="item.id">{{item.nombre}}</option>
+                            </select>
+                            <label for="producto">Producto</label>
+                        </div>
+                        <div class="form-floating mb-5 col-6">
+                            <table class="table table-hover table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <h3>Neto total: {{neto |  currency}}</h3>
+                    </div>
+                    <input 
+                        type="submit"
+                        class="btn btn-secondary col-12 py-3"
+                        [value]="ventaId != 'nuevo' ?
+                        'Editar factura-venta':'Agregar factura-venta'"
+                    />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

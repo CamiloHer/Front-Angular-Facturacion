@@ -1,0 +1,41 @@
+<div class="container-fluid px-3">
+    <div class="row">
+        <h3 class="text-start">Lista Ventas</h3>
+        <div class="card col-12 m-auto mt-3">
+            <div class="row">
+                <div class="tablaHeigth">
+                    <table class="table table-hover table-bordered">
+                        <thead class="table-dark">
+                          <tr>
+                            <tr>
+                                <th scope="col">idVenta</th>
+                                <th scope="col">fecha</th>
+                                <th scope="col">cliente</th>
+                                <th scope="col">Neto Total</th>
+                                <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let venta of listaVentas">
+                                <td>{{venta.id}}</td>
+                                <td>{{venta.fecha | date: 'dd/mm/yyyy' }}</td>
+                                <td>{{venta.idCliente}}</td>
+                                <td>{{venta.netoTotal | currency }}</td>
+                                <td class="text-end">
+                                    <button type="button" class="btn btn-outline-secondary mx-2"(click)="irVenta(venta.id)">Editar</button>
+                                    <button type="button" class="btn btn-outline-primary mx-2">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                </div>
+                  <div class="text-end my-3">
+                      <button 
+                        class="btn btn-secondary"
+                        routerLink="/ventas/formulario-venta/nuevo"
+                        >Agregar Nueva venta</button>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

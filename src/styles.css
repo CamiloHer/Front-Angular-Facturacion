@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background: ghostwhite;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.tablaHeigth{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 372px;
+    padding: 0;
+
+}
+
+.tablaHeigth::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.tablaHeigth::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.tablaHeigth::-webkit-scrollbar-button:increment,.tablaHeigth::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.tablaHeigth::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.tablaHeigth::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.tablaHeigth::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}

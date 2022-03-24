@@ -1,0 +1,51 @@
+
+<div class="container-fluid px-3">
+    <div class="row">
+        <h3 class="text-start">Lista productos</h3>
+        <div class="card col-12 m-auto mt-3">
+            <div class="row">
+                <div class="tablaHeigth">
+                    <table class="table table-hover table-bordered">
+                        <thead class="table-dark">
+                          <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">nombre</th>
+                            <th scope="col">cantidad</th>
+                            <th scope="col">precio</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of productos">
+                            <td>{{item.id}}</td>
+                            <td>{{item.nombre }}</td>
+                            <td>{{item.stock}}</td>
+                            <td>{{item.precio | currency }}</td>
+                            <td class="text-end">
+                                <button 
+                                    type="button" 
+                                    class="btn btn-outline-secondary mx-2"
+                                    (click)="irProducto(item.id)"
+                                    >Editar
+                                </button>
+                                <button 
+                                    type="button" 
+                                    class="btn btn-outline-primary mx-2" 
+                                    (click)="confirmacionEliminar(item.id)"
+                                    >Eliminar
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-end my-3">
+                    <button 
+                      class="btn btn-secondary"
+                      routerLink="/productos/formulario-producto/nuevo"
+                      >Agregar Nuevo Produto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
